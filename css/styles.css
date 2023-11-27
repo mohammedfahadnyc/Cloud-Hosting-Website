@@ -1,7 +1,8 @@
 /* Using Object orienter principle, Separating skin from structure(so separating colors/visuals from size padding margin etc etc), 
 separating container from content.
 following BEM naming convention */
-
+/* wherever we are using pixel size, we are doing so because  these sizes are fixed
+and doesnt change whether its on mobile or desktop etc */
 
 :root{
     --color-primary:#2584ff;
@@ -185,4 +186,31 @@ and we define style for verticle lists(list with ticks) */
 }
 
 
+
+
+/* icons */
+
+/* we set sizing of our icon and color. icon has a white circle outside,so we use a span/div a .icon-container
+and make it circle, and set it to flex and put items at center,only item it has is our icon so it goes to center
+we actually set the container to inline-flex so we can put other stuff on the same line we use the icon */
+
+.icon{
+    width: 40px;
+    height: 40px;
+}
+
+
+.icon--primary{
+    fill: var(--color-primary);
+}
+
+.icon-container{
+    height: 60px;
+    width: 60px;
+    background-color: #f3f9fa;
+    display: inline-flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
 
