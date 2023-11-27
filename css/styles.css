@@ -4,6 +4,8 @@ following BEM naming convention */
 /* wherever we are using pixel size, we are doing so because  these sizes are fixed
 and doesnt change whether its on mobile or desktop etc */
 
+
+
 :root{
     --color-primary:#2584ff;
     --color-secondary: #00d9ff;
@@ -12,7 +14,11 @@ and doesnt change whether its on mobile or desktop etc */
     --color-body: #aaa7b8;
 }
 
-
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
 
 
 /* Typography */
@@ -235,12 +241,6 @@ and we set some colors, hover effect and outline */
     white-space: nowrap;
 }
 
-
-.btn--block {
-    width: 100%;
-    display: inline-block;
-}
-
 .btn--primary {
     background: var(--color-primary);
     color: #fff;
@@ -249,8 +249,6 @@ and we set some colors, hover effect and outline */
 .btn--primary:hover {
     background: #3a8ffd;
 }
-
-
 
 .btn--secondary {
     background: var(--color-secondary);
@@ -261,8 +259,6 @@ and we set some colors, hover effect and outline */
     background: #05cdf0;
 }
 
-
-
 .btn--accent {
     background: var(--color-accent);
     color: #fff;
@@ -272,24 +268,69 @@ and we set some colors, hover effect and outline */
     background: #ec3000;
 }
 
-
-
 .btn--outline {
     background: #fff;
     color: var(--color-headings);
     border: 2px solid var(--color-headings);
 }
 
-
 .btn--outline:hover {
     background: var(--color-headings);
     color: #fff;
 }
 
-
+.btn--block {
+    width: 100%;
+    display: inline-block;
+}
 
 @media screen and (min-width: 1024px) {
     .btn {
         font-size: 1.5rem;
     }
+}
+
+
+
+
+
+/* inputs */
+/* we create the input box, and then we create a div with input box and a button and define styles to combine both,
+set the input-grp div to flex so both are shown side by side,
+we remove border from our input field  and give the div border  */
+
+.input{
+    border : 1px solid #ccc;
+    border-radius : 30px;
+    color : headings;
+    font-size: 2rem;
+    outline : 0;
+    padding : 1.5rem 3.5rem;
+
+}
+
+::placeholder{
+    color: cdcbd7;
+}
+
+@media screen and (min-width:1024px){
+     .input{
+        font-size: 1.5rem;
+     }
+}
+
+
+.input-group{
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    display: flex;
+}
+
+.input-group .input{
+    border : 0px;
+    flex-grow: 1;
+}
+
+.input-group .btn{
+    margin: 4px;
 }
