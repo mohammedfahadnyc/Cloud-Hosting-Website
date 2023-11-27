@@ -1,3 +1,8 @@
+/* Using Object orienter principle, Separating skin from structure(so separating colors/visuals from size padding margin etc etc), 
+separating container from content.
+following BEM naming convention */
+
+
 :root{
     --color-primary:#2584ff;
     --color-secondary: #00d9ff;
@@ -6,7 +11,10 @@
     --color-body: #aaa7b8;
 }
 
+
+
 /* Typography */
+/* setting fonts sizing for body, also setting it for different headings */
 
 html{
     font-size: 62.5%;
@@ -26,6 +34,7 @@ h3{
     color: var(--color-headings);
     margin-bottom: 1rem;
 }
+
 
 h1{
     font-size: 7rem;
@@ -59,4 +68,82 @@ p{
     }
 }
 
+
+
+
 /* Links */
+/* removing default underline, adding arrow at the end and arrow hover effect */
+
+a{
+    text-decoration: none;
+}
+
+.link-arrow{
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight:bold ;
+}
+
+.link-arrow::after{
+    content: '->';
+    margin-left: 5px;
+    transition: margin .15s;
+}
+
+.link-arrow:hover::after{
+    margin-left: 10px;
+}
+
+
+@media screen and (min-width: 1024px){
+    .link-arrow{
+        font-size:1.5rem ;
+    }
+}
+
+
+
+
+/* Badges */ 
+ /* we are creating a badge class for the structure and few other
+  classes to give  colors and another class for small badges size */
+
+.badge{
+    border-radius: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: .5rem 2rem;
+    white-space: nowrap;
+
+}
+
+.badge--primary{
+    background-color : var(--color-primary);
+    color : #fff;
+}
+
+.badge--secondary{
+    background-color : var(--color-secondary);
+    color: #fff;
+}
+
+
+.badge--small{
+    font-size:1.6rem ;
+}
+
+
+@media screen and (min-width:1024px) {
+    .badge{
+        font-size: 1.5rem;
+    }
+    .badge--small{
+        font-size: 1.2rem;
+    }    
+}
+
+
+
+
+
