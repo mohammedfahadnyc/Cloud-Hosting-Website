@@ -13,6 +13,7 @@ following BEM naming convention */
 
 
 
+
 /* Typography */
 /* setting fonts sizing for body, also setting it for different headings */
 
@@ -67,6 +68,7 @@ p{
         font-size: 2.4rem;;
     }
 }
+
 
 
 
@@ -144,6 +146,43 @@ a{
 }
 
 
+
+/* Lists */
+/* we set basic structure for any list. Then we define style for inline list,
+and we define style for verticle lists(list with ticks) */
+
+.list{
+    list-style: none;
+    color: var(--color-headings);
+    padding-left: 0;
+}
+
+
+
+/* each item in  an inline list has to be inline-block */
+.list--inline .list__item{
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+
+.list--tick {
+    list-style-image: url(../images/tick.svg);
+    padding-left: 3rem;
+}
+
+
+.list--tick  .list__item{
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+    list-style-image: url(../images/tick.svg);
+}
+
+@media screen and (min-width:1024px) {
+    .list--tick .list__item{
+    padding-left:0;
+    }
+}
 
 
 
