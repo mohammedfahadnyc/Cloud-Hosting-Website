@@ -294,7 +294,7 @@ and we set some colors, hover effect and outline */
 
 
 
-/* inputs */
+/* inputs for search and input field */
 /* we create the input box, and then we create a div with input box and a button and define styles to combine both,
 set the input-grp div to flex so both are shown side by side,
 we remove border from our input field  and give the div border  */
@@ -333,4 +333,103 @@ we remove border from our input field  and give the div border  */
 
 .input-group .btn{
     margin: 4px;
+}
+
+
+/* Cards */
+/* we create a card class, and its header and body, also define colors */
+/* later we use card, badge and lists to create a plan section */
+
+.card{
+    border-radius: 7px;
+    box-shadow: 0 0 20px 10px;
+    overflow: hidden;
+    
+}
+
+.card__header, .card__body{
+    padding: 2rem 3rem;
+    
+}
+
+
+.card--primary .card__header{
+    background:var(--color-primary);
+    color: #fff;
+}
+
+.card--secondary .card__header {
+    background: var(--color-secondary);
+    color: #fff;
+}
+
+
+/* Plans : Plans contains a card, a badge, a list and a button */
+/* The card header contains a header for plan name,
+pricing,a badge and a small description Card body contains a tick-list and a button We also have a popular badge for popular card,
+we just insert an image on the popular card before and using absolute positioning place it on top right of the card,also  
+for popular badge we  convert it to inline-block so we can give it a width..Since we are using absolute positioning,
+so we set its parent or card header to relative */
+
+
+.plan__name {
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.4rem;
+}
+
+.plan__price {
+    font-size: 6rem;
+}
+
+.plan__billing-cycle {
+    font-size: 2.4rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-right: 1rem;
+}
+
+.plan__description {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.plan .list__item {
+    margin-bottom: 2rem;
+}
+
+.plan--popular .card__header {
+    position: relative;
+}
+
+
+.plan--popular .card__header::before {
+    content: url(../images/popular.svg);
+     width: 40px;
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+    right: 5%;
+   
+}
+
+@media screen and (min-width: 1024px) {
+    .plan__name {
+        font-size: 1.4rem;
+    }
+
+    .plan__price {
+        font-size: 5rem;
+    }
+
+    .plan__billing-cycle {
+        font-size: 1.6rem;
+    }
+
+    .plan__description {
+        font-size: 1.7rem;
+    }
 }
