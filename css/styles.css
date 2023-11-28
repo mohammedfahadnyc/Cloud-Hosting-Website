@@ -433,3 +433,80 @@ so we set its parent or card header to relative */
         font-size: 1.7rem;
     }
 }
+
+
+/* Media Objects */
+/* We create a media object, it has an image and a body section
+Body has a title and a paragraph */
+
+.media{
+    display: flex;
+    /* flex-direction: row; */
+}
+
+.media__title {
+    margin-top: 0;
+}
+
+.media__body {
+    margin: 0 2rem;
+}
+
+.media__image {
+    margin-top: 1rem;
+}
+
+
+
+/* Quotes */
+
+/* Quotes has some texts and name of the person . Quote essentially has these components: A quote section and a footer section. The footer section is essentially a media object(media object has image on left, a title and a paragraph on right),
+footer section has a dash line image on left(media-image),
+name of the person(media-title) and their organization */
+.quote {
+    font-size: 3rem;
+    font-style: italic;
+    color: var(--color-body-darker);
+    line-height: 1.3;
+}
+
+.quote__text::before {
+    content: open-quote;
+}
+
+.quote__text::after {
+    content: close-quote;
+}
+
+.quote__author {
+    font-size: 3rem;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.quote__organization {
+    color: var(--color-headings);
+    opacity: 0.4;
+    font-size: 2rem;
+    font-style: normal;
+}
+
+.quote__line {
+    position: relative;
+    bottom: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+    .quote {
+        font-size: 2rem;
+    }
+
+    .quote__author {
+        font-size: 2.4rem;
+    }
+
+    .quote__organization {
+        font-size: 1.6rem;
+    }
+}
