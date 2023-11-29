@@ -803,3 +803,36 @@ we also hide the toggle for full screen and adjust layout for fullscreen */
         border: 0;
     }
 }
+
+
+/* Hero */
+/* This is a section,
+it contains a div which is a grid 1x2,
+it contains a header and a picture */
+.hero {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+}
+
+.hero__tagline {
+    font-size: 2rem;
+    color: #b9c3cf;
+    letter-spacing: 1px;
+    margin: 2rem 0 5rem;
+}
+
+.hero__image {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .hero {
+        padding-top: 0;
+    }
+
+    .hero__content {
+        text-align: left;
+        align-self: center;
+    }
+}
+
+
