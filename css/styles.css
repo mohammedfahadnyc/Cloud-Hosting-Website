@@ -1,4 +1,4 @@
-/* Using Object orienter principle, Separating skin from structure(so separating colors/visuals from size padding margin etc etc), 
+/* Using Object orienter principle, Separating skin from structure(so separating colors/visuals from size padding margin etc etc),
 separating container from content.
 following BEM naming convention */
 /* wherever we are using pixel size, we are doing so because  these sizes are fixed
@@ -6,12 +6,16 @@ and doesnt change whether its on mobile or desktop etc */
 
 
 
-:root{
-    --color-primary:#2584ff;
+
+:root {
+    --color-primary: #2584ff;
     --color-secondary: #00d9ff;
-    --color-accent: #ff3400; 
+    --color-accent: #ff3400;
     --color-headings: #1b0760;
-    --color-body: #aaa7b8;
+    --color-body: #918ca4;
+    --color-body-darker: #5c5577;
+    --color-border: #ccc;
+    --border-radius: 30px;
 }
 
 *,
@@ -20,31 +24,37 @@ and doesnt change whether its on mobile or desktop etc */
     box-sizing: border-box;
 }
 
-
+/* Typography */
 /* Typography */
 /* setting fonts sizing for body, also setting it for different headings */
 
-html{
+
+::selection {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+html {
+    /* 62.5% of 16px = 10px */
     font-size: 62.5%;
 }
 
-body{
-    font-family: 'Inter', sans-serif;
-    color: var(--color-body);
+body {
+    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 2.4rem;
     line-height: 1.5;
-
+    color: var(--color-body);
 }
 
-h1, 
-h2, 
-h3{
+h1,
+h2,
+h3 {
     color: var(--color-headings);
     margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
-
-h1{
+h1 {
     font-size: 7rem;
 }
 
@@ -54,179 +64,188 @@ h2 {
 
 h3 {
     font-size: 3rem;
+    font-weight: 500;
 }
 
-p{
+p {
     margin-top: 0;
 }
 
-
-@media screen and (min-width:1024px){
-    body{
+@media screen and (min-width: 1024px) {
+    body {
         font-size: 1.8rem;
     }
-    h1{
+
+    h1 {
         font-size: 8rem;
     }
-    h2{
+
+    h2 {
         font-size: 4rem;
     }
-    h3{
-        font-size: 2.4rem;;
+
+    h3 {
+        font-size: 2.4rem;
     }
 }
 
 
+.logo {
+    height: 150;
+    width: 100px;
+}
 
-
-
+/* Links */
 /* Links */
 /* removing default underline, adding arrow at the end and arrow hover effect */
 
-a{
+a {
     text-decoration: none;
 }
 
-.link-arrow{
+.link-arrow {
     color: var(--color-accent);
     text-transform: uppercase;
     font-size: 2rem;
-    font-weight:bold ;
+    font-weight: bold;
 }
 
-.link-arrow::after{
-    content: '->';
+.link-arrow::after {
+    content: "-->";
     margin-left: 5px;
-    transition: margin .15s;
+    transition: margin 0.15s;
 }
 
-.link-arrow:hover::after{
+.link-arrow:hover::after {
     margin-left: 10px;
 }
 
-
-@media screen and (min-width: 1024px){
-    .link-arrow{
-        font-size:1.5rem ;
+@media screen and (min-width: 1024px) {
+    .link-arrow {
+        font-size: 1.5rem;
     }
 }
 
+/* Badges */
+
+/* Badges */
+/* we are creating a badge class for the structure and few other
+ classes to give  colors and another class for small badges size */
 
 
-
-/* Badges */ 
- /* we are creating a badge class for the structure and few other
-  classes to give  colors and another class for small badges size */
-
-.badge{
+.badge {
     border-radius: 20px;
     font-size: 2rem;
-    font-weight: bold;
-    padding: .5rem 2rem;
+    font-weight: 600;
+    padding: 0.5rem 2rem;
     white-space: nowrap;
-
 }
 
-.badge--primary{
-    background-color : var(--color-primary);
-    color : #fff;
-}
-
-.badge--secondary{
-    background-color : var(--color-secondary);
+.badge--primary {
+    background: var(--color-primary);
     color: #fff;
 }
 
-
-.badge--small{
-    font-size:1.6rem ;
+.badge--secondary {
+    background: var(--color-secondary);
+    color: #fff;
 }
 
+.badge--small {
+    font-size: 1.6rem;
+    padding: 0.5rem 1.5rem;
+}
 
-@media screen and (min-width:1024px) {
-    .badge{
+@media screen and (min-width: 1024px) {
+    .badge {
         font-size: 1.5rem;
     }
-    .badge--small{
+
+    .badge--small {
         font-size: 1.2rem;
-    }    
+    }
 }
 
-
-
+/* Lists */
 /* Lists */
 /* we set basic structure for any list. Then we define style for inline list,
 and we define style for verticle lists(list with ticks) */
 
-.list{
+
+.list {
     list-style: none;
-    color: var(--color-headings);
     padding-left: 0;
 }
 
-
-
-/* each item in  an inline list has to be inline-block */
-.list--inline .list__item{
+.list--inline .list__item {
     display: inline-block;
     margin-right: 2rem;
 }
 
-
 .list--tick {
     list-style-image: url(../images/tick.svg);
     padding-left: 3rem;
+    color: var(--color-headings);
 }
 
-
-.list--tick  .list__item{
+.list--tick .list__item {
     padding-left: 0.5rem;
     margin-bottom: 1rem;
-    list-style-image: url(../images/tick.svg);
 }
 
-@media screen and (min-width:1024px) {
-    .list--tick .list__item{
-    padding-left:0;
+@media screen and (min-width: 1024px) {
+    .list--tick .list__item {
+        padding-left: 0;
     }
 }
 
-
-
-
+/* Icons */
 /* icons */
 
 /* we set sizing of our icon and color. icon has a white circle outside,so we use a span/div a .icon-container
 and make it circle, and set it to flex and put items at center,only item it has is our icon so it goes to center
 we actually set the container to inline-flex so we can put other stuff on the same line we use the icon */
 
-.icon{
+
+.icon {
     width: 40px;
     height: 40px;
 }
 
+.icon--small {
+    width: 30px;
+    height: 30px;
+}
 
-.icon--primary{
+.icon--primary {
     fill: var(--color-primary);
 }
 
-.icon-container{
-    height: 60px;
-    width: 60px;
-    background-color: #f3f9fa;
+.icon--white {
+    fill: #fff;
+}
+
+.icon-container {
+    background: #f3f9fa;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
     display: inline-flex;
-    border-radius: 50%;
     justify-content: center;
     align-items: center;
 }
 
-
-
+.icon-container--accent {
+    background: var(--color-accent);
+}
 
 /* Buttons */
-/* 
+/* Buttons */
+/*
 We define primary shape size of our button, some padding and text format, for block button set full width of its ::content
 and we set some colors, hover effect and outline */
+
+
 
 .btn {
     border-radius: 40px;
@@ -235,10 +254,18 @@ and we set some colors, hover effect and outline */
     font-size: 1.8rem;
     font-weight: 600;
     margin: 1rem 0;
+    outline: 0;
     padding: 2rem 3rem;
     text-align: center;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+.btn .icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    vertical-align: middle;
 }
 
 .btn--primary {
@@ -279,6 +306,11 @@ and we set some colors, hover effect and outline */
     color: #fff;
 }
 
+.btn--stretched {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
 .btn--block {
     width: 100%;
     display: inline-block;
@@ -290,71 +322,66 @@ and we set some colors, hover effect and outline */
     }
 }
 
-
-
-
-
+/* Inputs */
 /* inputs for search and input field */
 /* we create the input box, and then we create a div with input box and a button and define styles to combine both,
 set the input-grp div to flex so both are shown side by side,
 we remove border from our input field  and give the div border  */
 
-.input{
-    border : 1px solid #ccc;
-    border-radius : 30px;
-    color : headings;
+.input {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+    color: var(--color-headings);
     font-size: 2rem;
-    outline : 0;
-    padding : 1.5rem 3.5rem;
-
+    outline: 0;
+    padding: 1.5rem 3.5rem;
 }
 
-::placeholder{
-    color: cdcbd7;
+::placeholder {
+    color: #cdcbd7;
 }
 
-@media screen and (min-width:1024px){
-     .input{
-        font-size: 1.5rem;
-     }
-}
-
-
-.input-group{
-    border: 1px solid #ccc;
-    border-radius: 30px;
+.input-group {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
     display: flex;
 }
 
-.input-group .input{
-    border : 0px;
+.input-group .input {
+    border: 0;
     flex-grow: 1;
+    padding: 1.5rem 2rem;
 }
 
-.input-group .btn{
+.input-group .btn {
     margin: 4px;
 }
 
+@media screen and (min-width: 1024px) {
+    .input {
+        font-size: 1.5rem;
+    }
+}
 
+/* Cards */
 /* Cards */
 /* we create a card class, and its header and body, also define colors */
 /* later we use card, badge and lists to create a plan section */
 
-.card{
+
+.card {
     border-radius: 7px;
-    box-shadow: 0 0 20px 10px;
+    box-shadow: 0 0 20px 10px #f3f3f3;
     overflow: hidden;
-    
 }
 
-.card__header, .card__body{
+.card__header,
+.card__body {
     padding: 2rem 3rem;
-    
 }
 
-
-.card--primary .card__header{
-    background:var(--color-primary);
+.card--primary .card__header {
+    background: var(--color-primary);
     color: #fff;
 }
 
@@ -363,14 +390,26 @@ we remove border from our input field  and give the div border  */
     color: #fff;
 }
 
+.card--primary .badge--primary {
+    background: #126de4;
+}
+
+.card--secondary .badge--secondary {
+    background: #02cdf1;
+}
+
+/* Plans */
 
 /* Plans : Plans contains a card, a badge, a list and a button */
 /* The card header contains a header for plan name,
 pricing,a badge and a small description Card body contains a tick-list and a button We also have a popular badge for popular card,
-we just insert an image on the popular card before and using absolute positioning place it on top right of the card,also  
+we just insert an image on the popular card before and using absolute positioning place it on top right of the card,also
 for popular badge we  convert it to inline-block so we can give it a width..Since we are using absolute positioning,
 so we set its parent or card header to relative */
 
+.plan {
+    transition: transform 0.2s ease-out;
+}
 
 .plan__name {
     color: #fff;
@@ -401,20 +440,32 @@ so we set its parent or card header to relative */
     margin-bottom: 2rem;
 }
 
+.plan--popular {
+    transform: scale(1.1);
+}
+
 .plan--popular .card__header {
     position: relative;
 }
 
-
 .plan--popular .card__header::before {
     content: url(../images/popular.svg);
-     width: 40px;
+    width: 40px;
     display: inline-block;
     position: absolute;
     top: -6px;
     right: 5%;
-   
 }
+
+.plan:hover {
+    transform: scale(1.05);
+}
+
+.plan--popular:hover {
+    transform: scale(1.15);
+}
+
+
 
 @media screen and (min-width: 1024px) {
     .plan__name {
@@ -434,14 +485,15 @@ so we set its parent or card header to relative */
     }
 }
 
+/* Media  Objects*/
 
-/* Media Objects */
 /* We create a media object, it has an image and a body section
 Body has a title and a paragraph */
 
-.media{
+
+.media {
     display: flex;
-    /* flex-direction: row; */
+    margin-bottom: 4rem;
 }
 
 .media__title {
@@ -456,8 +508,7 @@ Body has a title and a paragraph */
     margin-top: 1rem;
 }
 
-
-
+/* Quotes */
 /* Quotes */
 
 /* Quotes has some texts and name of the person . Quote essentially has these components: A quote section and a footer section. The footer section is essentially a media object(media object has image on left, a title and a paragraph on right),
@@ -511,13 +562,11 @@ name of the person(media-title) and their organization */
     }
 }
 
-
-
-
-
+/* Grids */
 /* Grids */
 /* We have default grid in mobile with 1 col,
 then in tablet 2 col and large screens 3 col */
+/* Grids */
 
 .grid {
     display: grid;
@@ -535,18 +584,17 @@ then in tablet 2 col and large screens 3 col */
     }
 }
 
-
-
+/* Testimonials */
+\
 
 /* Testimonials */
-/* a testimonial is a card which has an image and a quote component. 
+/* a testimonial is a card which has an image and a quote component.
 Basically we have a grid 1x2, inside this we have two components,
 an image on left and a quote on right. In image grid, we have an image
 and a span for quote icon. In quote grid, we have as usual,
 a quote paragraph div and a quote footer(sit one after one up-down),
 quote footer div has a media image and a media body(sit side by side) */
 /* We set the quote icon to absolute to its always fixed */
-
 
 .testimonial {
     padding: 3rem;
@@ -583,16 +631,7 @@ quote footer div has a media image and a media body(sit side by side) */
     }
 }
 
-
-
-
 /* Callouts */
-
-/* Callout is basically a 1x2 grid, on left a text section,on right 
-column a button. The text section has a content div which has a 
-heading and a body. The button is a div. */
-/* In mobile, the button takes rest of the screen, so we divide our grid in 1fr auto */
-
 .callout {
     padding: 4rem;
     border-radius: 5px;
@@ -633,8 +672,7 @@ heading and a body. The button is a div. */
     }
 }
 
-
-
+/* Collapsibles */
 
 /* Collapsibles */
 /* We have a header and a content section,
@@ -647,6 +685,7 @@ we change its class to expanded,
 in css the expanded has a height,
 and we use js event listener to change this class when its clicked,
 we also change the icon style and class dynamically. */
+
 
 .collapsible__header {
     display: flex;
@@ -679,8 +718,7 @@ we also change the icon style and class dynamically. */
     opacity: 1;
 }
 
-
-
+/* Blocks */
 
 /* Blocks */
 /* Blocks are part of page,
@@ -693,6 +731,7 @@ for skewing right or left,
 we can just use polygon(clipping) in our class and apply this class to our section. */
 
 
+
 .block {
     --padding-vertical: 6rem;
     padding: var(--padding-vertical) 2rem;
@@ -700,6 +739,7 @@ we can just use polygon(clipping) in our class and apply this class to our secti
 
 .block__header {
     text-align: center;
+    margin-bottom: 4rem;
 }
 
 .block__heading {
@@ -711,18 +751,20 @@ we can just use polygon(clipping) in our class and apply this class to our secti
     color: #7b858b;
 }
 
-.block--dark .block__heading {
+.block--dark h1,
+.block--dark h2,
+.block--dark h3 {
     color: #fff;
 }
 
 .block--skewed-right {
     padding-bottom: calc(var(--padding-vertical) + 4rem);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%);
 }
 
 .block--skewed-left {
     padding-bottom: calc(var(--padding-vertical) + 4rem);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
 }
 
 .container {
@@ -730,6 +772,7 @@ we can just use polygon(clipping) in our class and apply this class to our secti
     margin: 0 auto;
 }
 
+/* Navigation Bar */
 
 /* Navigation Bar */
 /* Navbar is a nav element,
@@ -740,6 +783,7 @@ essentially we have two class,
 one for expanded one for not,
 and using js we dynamically change these class for the menu toggle icon,
 we also hide the toggle for full screen and adjust layout for fullscreen */
+
 
 .nav {
     background: #000;
@@ -776,6 +820,7 @@ we also hide the toggle for full screen and adjust layout for fullscreen */
 }
 
 /* When the class changes to expanded(using js), we change styling for toggler as well */
+
 .nav.collapsible--expanded .nav__toggler {
     opacity: 1;
     box-shadow: 0 0 0 3px #666;
@@ -804,14 +849,12 @@ we also hide the toggle for full screen and adjust layout for fullscreen */
     }
 }
 
+/* Hero */
 
 /* Hero */
 /* This is a section,
 it contains a div which is a grid 1x2,
 it contains a header and a picture */
-.hero {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
-}
 
 .hero__tagline {
     font-size: 2rem;
@@ -835,9 +878,6 @@ it contains a header and a picture */
     }
 }
 
-
-
-
 /* Domain Block */
 /* Its a section,
 our domain block section has three parts,
@@ -846,6 +886,8 @@ an input group div and a ul list of badges. We style them */
 /* For prices badges on larger screen, we set grid col minmax so it will have a min 100px and if theres enf space,
 each will get max 1fr so they spread nicely on larger screens */
 
+
+
 .block-domain .input-group {
     box-shadow: 0 0 30px 20px #e6ebee;
     border: 0;
@@ -869,37 +911,23 @@ each will get max 1fr so they spread nicely on larger screens */
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     }
 }
-
-
 
 /* Plans Block */
-/* Domain Block */
-.block-domain .input-group {
-    box-shadow: 0 0 30px 20px #e6ebee;
-    border: 0;
-    margin: 4rem auto;
-    max-width: 670px;
+.block-plans .grid {
+    gap: 8rem 4rem;
 }
 
-.block-domain__prices {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 6rem);
-    font-size: 2rem;
-    font-weight: 600;
-    justify-items: center;
-    max-width: 700px;
+.block-plans .card {
+    max-width: 500px;
     margin: 0 auto;
 }
 
-@media screen and (min-width: 768px) {
-    .block-domain__prices {
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    }
-}
-
-
 /* Features */
+/* Features */
+/* We have a section,
+inside that we have 3 1x2 grids(articles),
+each contain a div and an image. */
+
 .feature {
     gap: 4rem 2rem;
     margin: 12rem 0;
@@ -923,10 +951,12 @@ each will get max 1fr so they spread nicely on larger screens */
     }
 }
 
-
-
-
 /* Showcase Block */
+/* Showcase Block */
+/* I skipped features and showcase block video. Essential we have a section that has header and a div,
+that div has a picture and ul,
+that ul has some media object as list items.(each li is a div of media object) */
+
 .block-showcase__image>img {
     width: 100%;
 }
@@ -947,6 +977,12 @@ each will get max 1fr so they spread nicely on larger screens */
 }
 
 /* Footer */
+/* Footer */
+/* Footer section has some sections(or divs),
+each section has a header,
+icon,
+a collapsible ul. */
+
 .footer {
     background: #232323;
 }
