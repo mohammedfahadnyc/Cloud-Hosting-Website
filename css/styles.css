@@ -836,3 +836,37 @@ it contains a header and a picture */
 }
 
 
+
+
+/* Domain Block */
+/* Its a section,
+our domain block section has three parts,
+a header,
+an input group div and a ul list of badges. We style them */
+/* For badges on larger screen, we set grid col minmax so it will have a min 100px and if theres enf space,
+each will get max 1fr so they spread nicely on larger screens */
+
+.block-domain .input-group {
+    box-shadow: 0 0 30px 20px #e6ebee;
+    border: 0;
+    margin: 4rem auto;
+    max-width: 670px;
+}
+
+.block-domain__prices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 6rem);
+    font-size: 2rem;
+    font-weight: 600;
+    justify-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .block-domain__prices {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+}
+
