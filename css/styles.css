@@ -679,3 +679,53 @@ we also change the icon style and class dynamically. */
     opacity: 1;
 }
 
+
+
+
+/* Blocks */
+/* Blocks are part of page,
+that can contain sections divs etc,
+they can contain many elements but they mainly work as a background element,
+they can be skewed left or right,
+usually they are a section and can contain anything inside. We give our blocks some padding and define some colors for its heading,
+content and background and we can create skewed left or right values,
+for skewing right or left,
+we can just use polygon(clipping) in our class and apply this class to our section. */
+
+
+.block {
+    --padding-vertical: 6rem;
+    padding: var(--padding-vertical) 2rem;
+}
+
+.block__header {
+    text-align: center;
+}
+
+.block__heading {
+    margin-top: 0;
+}
+
+.block--dark {
+    background: #000;
+    color: #7b858b;
+}
+
+.block--dark .block__heading {
+    color: #fff;
+}
+
+.block--skewed-right {
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+}
+
+.block--skewed-left {
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
