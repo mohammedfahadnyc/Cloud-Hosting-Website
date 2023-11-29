@@ -729,3 +729,77 @@ we can just use polygon(clipping) in our class and apply this class to our secti
     max-width: 1140px;
     margin: 0 auto;
 }
+
+
+/* Navigation Bar */
+/* Navbar is a nav element,
+which contain a link,
+an icon and a unordered list (horizontal or vertical). We set some styles for the icon,
+lists etc. We use javascript on the icon,
+essentially we have two class,
+one for expanded one for not,
+and using js we dynamically change these class for the menu toggle icon,
+we also hide the toggle for full screen and adjust layout for fullscreen */
+
+.nav {
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    align-items: center;
+}
+
+.nav__list {
+    width: 100%;
+    margin: 0;
+}
+
+.nav__item {
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #222;
+}
+
+.nav__item>a {
+    color: #d2d0db;
+    transition: color 0.3s;
+}
+
+.nav__item>a:hover {
+    color: #fff;
+}
+
+.nav__toggler {
+    opacity: 0.5;
+    transition: box-shadow 0.15s;
+    cursor: pointer;
+}
+
+/* When the class changes to expanded(using js), we change styling for toggler as well */
+.nav.collapsible--expanded .nav__toggler {
+    opacity: 1;
+    box-shadow: 0 0 0 3px #666;
+    border-radius: 5px;
+}
+
+.nav__brand {
+    transform: translateY(5px);
+}
+
+@media screen and (min-width: 768px) {
+    .nav__toggler {
+        display: none;
+    }
+
+    .nav__list {
+        width: auto;
+        display: flex;
+        font-size: 1.6rem;
+        max-height: 100%;
+        opacity: 1;
+    }
+
+    .nav__item {
+        border: 0;
+    }
+}
